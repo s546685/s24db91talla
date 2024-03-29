@@ -1,0 +1,18 @@
+extends layout
+
+block content
+  h1= title
+  p The title of the page is #{title} 
+  button(type="button", class="btn btn-danger" onclick = "double()") press me
+  div(id="double") Up the amount
+  script.
+    var value = 0;
+    var power = 1;
+    function double(){
+        value++;
+        power *= 2;
+        var result = `2 to the power of ${value} is ${power}`;
+        document.getElementById('double').innerText = result;
+    }
+  - var url = 'watch';
+  a(href='/' + url) watches
