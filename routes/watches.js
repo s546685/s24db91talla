@@ -1,9 +1,6 @@
 var express = require('express');
+const watches_controlers= require('../controllers/watches');
 var router = express.Router();
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('watches', { title: 'A seartch by watches' });
-});
-
+/* GET costumes */
+router.get('/', watches_controlers.watches_view_all_Page );
 module.exports = router;
