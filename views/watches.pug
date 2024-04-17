@@ -4,11 +4,17 @@ block content
   h1= title
   - let items = results
   div(class="container-fluid")
+  - let cre = `dispatch(\"/watches/create\")`
+    button.btn( class="btn-primary ml-1", onclick= cre) Create
     div(class="row m-1")
       each item in items
-        - let destination = `dispatch(\"/costumes/update?id=${item._id}\")`
-        div(class="row-sm-2", class="m-1") Item #{item.watches_brand}(#{item.watches_type}) is #{item.cost}
-        button.btn( class="btn-primary ml-1", onclick= destination) Update
+        - let destination = `dispatch(\"/watches/update?id=${item._id}\")`
+        - let del = `dispatch(\"/watches/delete?id=${item._id}\")`
+        - let det = `dispatch(\"/watches/detail?id=${item._id}\")`
+          div(class="row-sm-2", class="m-1") Item #{item.watches_brand}(#{item.watches_type}) is #{item.cost}
+            button.btn( class="btn-primary ml-1", onclick= destination) Update
+            button.btn( class="btn-primary ml-1", onclick= del) delete
+            button.btn( class="btn-primary ml-1", onclick= det) detail
   script.
     function dispatch(path){
       window.location.href=path
